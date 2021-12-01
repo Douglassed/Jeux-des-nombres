@@ -1,18 +1,23 @@
 # Projet Front
 
+
 ## Members: // TODO
+Clément ALLAVENA
+Clément REGIS
+
 
 ### TP group : 
-- [ ] TPA41
+- [x] TPA41
 - [ ] TPA42
 - [ ] TPA51
 - [ ] TPA52
-- [x] Not selected
+- [ ] Not selected
 
 
 
 ## Project setup
 ```
+
 npm install
 ```
 
