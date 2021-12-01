@@ -1,6 +1,6 @@
 <template>
-  <div style="text-align: left; width: 400px">
-    TODO
+  <div>
+    <router-view/>
   </div>
 </template>
 
