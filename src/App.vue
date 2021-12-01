@@ -1,13 +1,15 @@
 <template>
-  <div style="text-align: left; width: 400px">
-    TODO
+  <div style="text-align: center; width: auto">
+    <Game/>
   </div>
 </template>
 
 <script>
 
+import Game from "./Game";
 export default {
   name: 'App',
+  components: {Game},
 }
 </script>
 
