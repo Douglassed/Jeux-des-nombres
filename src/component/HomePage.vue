@@ -28,5 +28,4 @@ export default {
 div {
   margin: 15px;
 }
-
 </style>
