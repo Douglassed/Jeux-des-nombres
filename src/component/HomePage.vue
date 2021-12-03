@@ -9,7 +9,10 @@
       </router-link>
     </div>
     <div>
-      <button class="btn btn-success">Consulter les anciennes parties</button>
+        <router-link to="/stats">
+          <button class="btn btn-success">Consulter les anciennes parties</button>
+        </router-link>
+
     </div>
   </div>
 
@@ -25,4 +28,5 @@ export default {
 div {
   margin: 15px;
 }
+
 </style>
