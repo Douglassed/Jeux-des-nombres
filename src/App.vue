@@ -1,13 +1,15 @@
 <template>
-  <div>
+  <div style="text-align: center; width: auto">
     <router-view/>
   </div>
 </template>
 
 <script>
 
+import Game from "./Game";
 export default {
   name: 'App',
+  components: {Game},
 }
 </script>
 
