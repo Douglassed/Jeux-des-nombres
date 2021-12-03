@@ -1,6 +1,6 @@
 <template>
   <div style="text-align: center; width: auto">
-    <Game/>
+    <router-view/>
   </div>
 </template>
 
