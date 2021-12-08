@@ -1,8 +1,8 @@
 import { createWebHistory, createRouter } from "vue-router";
 import Game from "./component/Game";
 import EndGame from "./component/EndGame";
-import HomePage from "@/Component/HomePage";
-import StatisticsPage from "@/Component/StatisticsPage";
+import HomePage from "./component/HomePage";
+import StatisticsPage from "./component/StatisticsPage";
 
 const routes = [
     {
