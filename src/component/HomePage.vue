@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h4 style="text-align: left">Nom et premon : Clément REGIS et Clément ALLAVENA </h4>
+    <h4 style="text-align: left">Nom et premon : Clément REGIS et Clément ALLAVENA</h4>
     <hr/>
     <h2>Jeux des nombres</h2>
     <div>
