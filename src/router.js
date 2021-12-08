@@ -1,6 +1,7 @@
 import { createWebHistory, createRouter } from "vue-router";
-import HomePage from "@/Component/HomePage";
-import App from "@/App";
+import Game from "./component/Game";
+import EndGame from "./component/EndGame";
+import HomePage from "./component/HomePage";
 
 const routes = [
     {
@@ -8,6 +9,17 @@ const routes = [
         name: "Home",
         component: HomePage, /* <--- Change it */
     },
+    {
+        path: "/game",
+        name: "Game",
+        component: Game,
+    },
+    {
+        path: "/endGame",
+        name: "endgame",
+        component: EndGame,
+        props: true
+    }
 ];
 
 const router = createRouter({
