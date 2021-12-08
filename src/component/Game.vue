@@ -43,11 +43,11 @@
           <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          Etes vous sur de vouloir abandonner au bout de {{nbOfTry}}?
+          Etes vous sur de vouloir abandonner au bout de {{nbOfTry}} essais?
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
-          <button type="button" class="btn btn-primary">Abandonner</button>
+          <button type="button" class="btn btn-primary" @click="forfeit()" data-dismiss="modal">Abandonner</button>
         </div>
       </div>
     </div>
@@ -96,18 +96,26 @@ export default {
       }.bind(this),1000)
     },
     forfeit() {
-
+      this.endgame("", false)
+    },
+    endgame: function (time, victory) {
+      this.$router.push({
+        name: 'endgame',
+        params: {
+          nbOfTry: this.nbOfTry,
+          time: time,
+          victory: victory
+        }
+      })
     },
     guess(){
       this.showHint = true;
       this.nbOfTry++;
       if (this.guessVar == this.FAKE_NUMBER_TO_GUESS){
-        this.hint = "Bien joué"
-        return
+        this.endgame(this.minutes + ":" + this.seconds, true)
       }
       if (this.guessVar > this.FAKE_NUMBER_TO_GUESS){
         this.hint = "C'est moins"
-        return
       } else {
         this.hint = "C'est plus"
       }
@@ -117,7 +125,7 @@ export default {
     countDownComputed() {
       if (this.finish) {
         clearInterval(this.intervalId)
-        return "TERMINÉ"
+        this.forfeit()
       }
       return this.minutes + ":" + this.seconds;
     }

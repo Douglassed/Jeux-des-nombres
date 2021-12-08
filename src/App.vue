@@ -6,7 +6,8 @@
 
 <script>
 
-import Game from "./Game";
+import Game from "./component/Game";
+
 export default {
   name: 'App',
   components: {Game},

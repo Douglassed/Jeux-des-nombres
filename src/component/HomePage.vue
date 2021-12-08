@@ -4,7 +4,9 @@
     <hr/>
     <h2>Jeux des nombres</h2>
     <div>
-      <button class="btn btn-primary">Jouer une partie</button>
+      <router-link to="/game">
+        <button class="btn btn-primary" >Jouer une partie</button>
+      </router-link>
     </div>
     <div>
       <button class="btn btn-success">Consulter les anciennes parties</button>
