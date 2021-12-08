@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h4 style="text-align: left">Nom et premon : Clément REGIS et Clément ALLAVENA </h4>
+    <h4 style="text-align: left">Nom et premon : Clément REGIS et Clément ALLAVENA</h4>
     <hr/>
     <h2>Jeux des nombres</h2>
     <div>
@@ -9,7 +9,10 @@
       </router-link>
     </div>
     <div>
-      <button class="btn btn-success">Consulter les anciennes parties</button>
+        <router-link to="/stats">
+          <button class="btn btn-success">Consulter les anciennes parties</button>
+        </router-link>
+
     </div>
   </div>
 
