@@ -3,6 +3,8 @@ import Game from "./component/Game";
 import EndGame from "./component/EndGame";
 import HomePage from "./component/HomePage";
 import StatisticsPage from "./component/StatisticsPage";
+import About from "./component/About";
+import Help from "./component/Help";
 
 const routes = [
     {
@@ -25,6 +27,16 @@ const routes = [
         path: "/stats",
         name: "Statistics",
         component: StatisticsPage
+    },
+    {
+        path: "/about",
+        name: "About",
+        component: About
+    },
+    {
+        path: "/help",
+        name: "Help",
+        component: Help
     }
 ];
 
