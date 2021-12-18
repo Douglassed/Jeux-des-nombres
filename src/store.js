@@ -1,11 +1,12 @@
 import {createStore} from 'vuex'
+import game from "./component/Game";
 
 export const store = createStore({
     state() {
         let averageElapsedTime;
         return {
             count: 0,
-            games: [{}], // game(numGame, nbOfTry, timeElapsed, victory)
+            games: [], // game(numGame, nbOfTry, timeElapsed, victory)
             averageElapsedTime,
             averageNbOfTry: Number
         }
@@ -18,16 +19,18 @@ export const store = createStore({
             return state.games.length
         },
         getAllWiningGames: state => {
-            return state.games.filter(game => game.victory === "true").length
+            return state.games.filter(game => game.victory === true).length
         },
         getAllLosingGames: state => {
-            return state.games.filter(game => game.victory === "false").length
+            return state.games.filter(game => game.victory === false).length
         },
         getAllTime: state => {
             return state.games.filter(game => game.time)
         },
         getAllNbOfTry: state => {
-            return state.games.filter(game => game.nbOfTry)
+            const reducer = (previousValue, currentValue) => previousValue + currentValue;
+            if (state.games.length === 0) return 0
+            return state.games.map(game => game.nbOfTry).reduce(reducer)
         }
     },
     mutations: {
