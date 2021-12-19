@@ -3,11 +3,11 @@
   <hr/>
   <div id="global">
     <ul>
-      <li><router-link to="/" id="link">Home</router-link></li>
-      <li><router-link to="/game" id="link">Jouer</router-link></li>
-      <li><router-link to="/stats" id="link">Stats</router-link></li>
-      <li style="float:right"><router-link to="/about" id="link">À propos</router-link></li>
-      <li style="float:right"><router-link to="/help" id="link">Aide</router-link></li>
+      <li><router-link to="/" class="link">Home</router-link></li>
+      <li><router-link to="/game" class="link">Jouer</router-link></li>
+      <li><router-link to="/stats" class="link">Stats</router-link></li>
+      <li style="float:right"><router-link to="/about" class="link">À propos</router-link></li>
+      <li style="float:right"><router-link to="/help" class="link">Aide</router-link></li>
     </ul>
 
     <div style="text-align: center; width: auto">
@@ -50,7 +50,7 @@ li {
 }
 
 
-li #link {
+li .link {
   display: block;
   text-align: center;
   padding: 14px 30px;
@@ -60,7 +60,7 @@ li #link {
 }
 
 /* Change the link color to #111 (black) on hover */
-li #link:hover {
+li .link:hover {
   background-color: grey;
 }
 

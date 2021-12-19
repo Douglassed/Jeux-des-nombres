@@ -55,6 +55,8 @@
 </template>
 
 <script>
+import {mapGetters, mapMutations} from 'vuex'
+
 export default {
   name: "Game",
   data() {
@@ -78,6 +80,7 @@ export default {
     clearInterval(this.intervalId)
   },
   methods: {
+    ...mapMutations(['ADD_GAME', 'increment']),
     decrease: function() {
       if (this.minutes === 0 && this.seconds === 0) {
         this.finish = true;
@@ -99,6 +102,10 @@ export default {
       this.endgame("", false)
     },
     endgame: function (time, victory) {
+      this.increment()
+      this.ADD_GAME({
+        nbOfTry: this.nbOfTry, timeElapsed: time, victory: victory
+      })
       this.$router.push({
         name: 'endgame',
         params: {
