@@ -8,7 +8,7 @@
         <p>Parties jouées : {{ playGame }}</p>
         <p>Parties gagnées : {{ winGame }}</p>
         <p>Parties perdues : {{ loseGame }}</p>
-        <p>Taux de victoire : {{ (winGame/playGame)*100 }} %</p>
+        <p>Taux de victoire : {{ statsVictory }} %</p>
         <p>Temps moyen de partie : {{ moyTime }}</p>
         <p>Nombre de tentatives moyen par partie : {{ nbTryGame }}</p>
       </div>
@@ -56,9 +56,10 @@ export default {
       playGame : this.getAllGamesCount(),
       winGame : this.getAllWiningGames(),
       loseGame : this.getAllLosingGames(),
-      moyTime : 0,
+      moyTime : "00:00",
       nbTryGame : this.getAllNbOfTry(),
       gameList : [],
+      statsVictory: 0
     }
   },
   mounted() {
@@ -74,9 +75,31 @@ export default {
         'getAllNbOfTry'
     ]),
     fill : function () {
-      console.log(this.getAllGames())
-      console.log(this.getAllNbOfTry())
       this.gameList = this.getAllGames()
+      this.statsVictory = isNaN((this.winGame/this.playGame)*100) ? 0 : (this.winGame/this.playGame)*100
+      this.moyTime = this.calcAverageTime()
+    },
+    calcAverageTime : function () {
+      // Get all time with a string format ["9:55", "8:25"]
+      let time = this.getAllTime()
+      let average = 0;
+
+      // transform all value in time[], in time seconds and add it to average
+      time.forEach((value) => {
+        const tmp = value.split(':');
+        average += (parseInt(tmp[0])*60)+parseInt(tmp[1])
+      })
+
+      // Convert average from seconds to minutes 570 -> 9.9 minutes
+      average = (average/time.length)/60
+
+      // Convert minutes value from average to decimalMinute 0.9 minutes -> 0.50 minutes
+      const decimalMinutes = Number("0." + average.toString().split('.')[1]);
+      const tmpMinute = decimalMinutes * 60;
+
+      // Format average to "9:50"
+      average = "" + average.toString().split('.')[0] + ":" + tmpMinute
+      return average
     }
   }
 }

@@ -25,7 +25,7 @@ export const store = createStore({
             return state.games.filter(game => game.victory === false).length
         },
         getAllTime: state => {
-            return state.games.filter(game => game.time)
+            return state.games.map(game => game.timeElapsed)
         },
         getAllNbOfTry: state => {
             const reducer = (previousValue, currentValue) => previousValue + currentValue;
@@ -35,6 +35,7 @@ export const store = createStore({
     },
     mutations: {
         ADD_GAME: (state, payload) => {
+
             state.games.push({numGame: state.count, nbOfTry: payload.nbOfTry, timeElapsed: payload.timeElapsed, victory: payload.victory })
         },
         increment (state){
