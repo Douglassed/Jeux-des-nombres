@@ -5,7 +5,7 @@
     <ul>
       <li><router-link to="/" class="link">Home</router-link></li>
       <li><router-link to="/game" class="link">Jouer</router-link></li>
-      <li><router-link to="/stats" class="link">Stats</router-link></li>
+      <li><router-link to="/stats" class="link" id="cp_link_stats">Stats</router-link></li>
       <li style="float:right"><router-link to="/about" class="link">À propos</router-link></li>
       <li style="float:right"><router-link to="/help" class="link">Aide</router-link></li>
     </ul>

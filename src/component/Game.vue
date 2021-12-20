@@ -35,7 +35,7 @@
       <!-- PlaceHolder -->
     </div>
     <div class="col">
-      <button class="btn btn-danger" type="button" data-toggle="modal" data-target="#forfeitDialog">Abandonner</button>
+      <button class="btn btn-danger" type="button" data-toggle="modal" data-target="#forfeitDialog" id="cp_btn_abandon">Abandonner</button>
     </div>
     <div class="col">
       <!-- PlaceHolder -->
