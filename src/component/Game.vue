@@ -27,7 +27,7 @@
       <!-- PlaceHolder -->
     </div>
     <div class="col">
-      <button class="btn btn-danger" type="button" data-toggle="modal" data-target="#forfeitDialog">Abandonner</button>
+      <button class="btn btn-danger" type="button" data-toggle="modal" data-target="#forfeitDialog" id="cp_btn_abandon">Abandonner</button>
     </div>
     <div class="col">
       <!-- PlaceHolder -->
@@ -47,7 +47,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
-          <button type="button" class="btn btn-primary" @click="forfeit()" data-dismiss="modal">Abandonner</button>
+          <button type="button" class="btn btn-primary" @click="forfeit()" data-dismiss="modal" id="cp_btn_validAbandon">Abandonner</button>
         </div>
       </div>
     </div>
