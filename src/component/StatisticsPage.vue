@@ -77,7 +77,8 @@ export default {
     fill : function () {
       this.gameList = this.getAllGames()
       this.statsVictory = isNaN((this.winGame/this.playGame)*100) ? 0 : (this.winGame/this.playGame)*100
-      this.moyTime = this.calcAverageTime()
+      if (this.playGame !== 0)
+        this.moyTime = this.calcAverageTime()
     },
     calcAverageTime : function () {
       // Get all time with a string format ["9:55", "8:25"]
@@ -94,11 +95,23 @@ export default {
       average = (average/time.length)/60
 
       // Convert minutes value from average to decimalMinute 0.9 minutes -> 0.50 minutes
-      const decimalMinutes = Number("0." + average.toString().split('.')[1]);
-      const tmpMinute = decimalMinutes * 60;
+      const decimalSeconds = Number("0." + average.toString().split('.')[1]);
+      let tmpSeconds = decimalSeconds * 60;
+      tmpSeconds = Math.round(tmpSeconds)
+      let tmpMinutes = Number(average.toString().split('.')[0])
+      if (tmpSeconds === 60){
+        tmpMinutes += 1;
+        tmpSeconds = 0
+      }
+
+      const regex = /[0-9]{1}/sg;
+      let match = regex[Symbol.match](String(tmpSeconds));
+
+      if (match.length === 1)
+        tmpSeconds = "0"+tmpSeconds
 
       // Format average to "9:50"
-      average = "" + average.toString().split('.')[0] + ":" + tmpMinute
+      average = "" + tmpMinutes + ":" + tmpSeconds
       return average
     }
   }
