@@ -2,13 +2,19 @@
   <div>
     <p :style="JSON.parse(this.victory) ? 'color:green' : 'color:red'">{{ message() }}</p>
   </div>
+  <div>
+    <router-link to="/">
+      <button class="btn btn-primary">Retour à l'accueil</button>
+    </router-link>
+  </div>
+
 </template>
 
 <script>
 export default {
   name: "EndGame",
   props: {
-    nbOfTry: Number,
+    nbOfTry: "",
     time: String,
     victory: false
   },
@@ -26,5 +32,10 @@ export default {
 </script>
 
 <style scoped>
-
+div + div {
+  margin : 10px;
+}
+p {
+  font-size: 150%;
+}
 </style>

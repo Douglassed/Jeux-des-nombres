@@ -1,12 +1,11 @@
 <template xmlns="http://www.w3.org/1999/html">
+  <h2 style="text-align: left; font-weight: bold">Trouver le nombre compris entre 0 et 1000</h2>
   <div class="row align-items-center">
     <div class="col">
       <!-- PlaceHolder -->
     </div>
     <div class="col">
-      <div>
-        {{ countDownComputed }}
-      </div>
+      
       <br/>
       <div class="input-group mb-3">
         <input type="text" class="form-control" placeholder="Entrer un nombre" v-model="guessVar"
@@ -14,6 +13,9 @@
         <button class="btn btn-secondary" type="button" id="button-addon2" @click="guess()" :disabled="guessLoading" @keypress.enter="guess()">
           Deviner
         </button>
+      </div>
+      <div>
+        Temps restant : {{ countDownComputed }} 
       </div>
     </div>
     <div class="col">
@@ -25,7 +27,7 @@
     <div class="spinner-border" role="status" v-if="guessLoading">
       <span class="visually-hidden">Loading...</span>
     </div>
-    {{ hint }}
+    {{ previousGuess }} : {{ hint }}
     <br/>
     (Nombre d'essais: {{ nbOfTry }})
   </div>
@@ -71,7 +73,8 @@ export default {
   data() {
     return {
       nbOfTry: 0,
-      guessVar: 0,
+      guessVar: "",
+      previousGuess: "",
       minutes: 10,
       seconds: 0,
       finish: false,
@@ -124,7 +127,7 @@ export default {
       this.$router.push({
         name: 'endgame',
         params: {
-          nbOfTry: this.nbOfTry,
+          nbOfTry: this.nbOfTry.toString(),
           time: time,
           victory: victory
         }
@@ -133,17 +136,20 @@ export default {
     guess() {
       this.showHint = true;
       this.nbOfTry++;
-      this.guessApi().then(value => {
+      this.guessApi(this.previousGuess).then(value => {
         this.hintReveal(value.data.code)
         this.guessLoading = true
       })
           .catch(reason => console.log(reason))
           .finally(() => this.guessLoading = false)
+      
     },
     hintReveal(hintIndex) {
       if (hintIndex === 0) {
         this.endgame(this.minutes + ":" + this.seconds, true)
       }
+      this.previousGuess = this.guessVar;
+      this.guessVar = "";
       if (hintIndex === -1) {
         this.hint = "C'est moins"
       } else {
@@ -168,11 +174,15 @@ export default {
         clearInterval(this.intervalId)
         this.forfeit("10:00")
       }
-      return this.minutes + ":" + this.seconds;
+      let strSec = this.seconds.toString()
+      return this.minutes + ":" + ((strSec.length === 1)?'0'+strSec:strSec);
     }
   }
 }
 </script>
 
 <style scoped>
+input {
+  min-width: 50px;
+}
 </style>
